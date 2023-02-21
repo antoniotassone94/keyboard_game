@@ -1,0 +1,84 @@
+#contenitore,#tastiera,.tasto,button,#punteggio,#parola{
+  width:max-content;
+  height:max-content;
+  font-size:30pt;
+  text-align:center;
+}
+
+#contenitore,#tastiera,.tasto,#punteggio,#parola{
+  margin-top:auto;
+  margin-left:auto;
+  margin-bottom:auto;
+  margin-right:auto;
+}
+
+#numero{
+  margin-top:0px;
+  margin-left:0px;
+  margin-bottom:0px;
+  margin-right:0px;
+  padding-top:0px;
+  padding-left:0px;
+  padding-bottom:0px;
+  padding-right:0px;
+  border:0px none transparent;
+  width:100%;
+  height:100%;
+}
+
+#punteggio,#parola{
+  font-weight:bold;
+}
+
+#punteggio{
+  color:rgb(102,220,97);
+}
+
+#parola{
+  color:white;
+}
+
+#riga1,#riga2,#riga3{
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+#contenitore,#tastiera,.tasto,#punteggio,#parola{
+  padding-top:0px;
+  padding-left:0px;
+  padding-bottom:0px;
+  padding-right:0px;
+}
+
+button{
+  padding-top:13px;
+  padding-left:13px;
+  padding-bottom:13px;
+  padding-right:13px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+#contenitore,#punteggio,#parola{
+  border:20px solid transparent;
+}
+
+#tastiera,.tasto{
+  border:0px solid transparent;
+}
+
+button{
+  background-color:rgb(238,238,238);
+  border:4px solid rgb(77, 77, 77);
+  color:rgb(107,107,107);
+}
+
+#contenitore,#tastiera{
+  display:flex;
+  flex-direction:column;
+}
+
+#punteggio,#riga1,#riga2,#riga3{
+  display:flex;
+  flex-direction:row;
+}
