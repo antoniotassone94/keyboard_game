@@ -1,38 +1,39 @@
 <div id="contenitore">
-  <div id="punteggio">Punti:&nbsp;<div id="numero">0</div></div>
-  <div id="parola">parola in questo spazio</div>
+  <div id="punteggio">Punti:&nbsp;<div #numero id="numero">0</div></div>
+  <div #parola id="parola"></div>
   <div id="tastiera">
     <div id="riga1">
-      <div class="tasto"><button id="Q">Q</button></div>
-      <div class="tasto"><button id="W">W</button></div>
-      <div class="tasto"><button id="E">E</button></div>
-      <div class="tasto"><button id="R">R</button></div>
-      <div class="tasto"><button id="T">T</button></div>
-      <div class="tasto"><button id="Y">Y</button></div>
-      <div class="tasto"><button id="U">U</button></div>
-      <div class="tasto"><button id="I">I</button></div>
-      <div class="tasto"><button id="O">O</button></div>
-      <div class="tasto"><button id="P">P</button></div>
+      <div class="tasto"><button #Q>Q</button></div>
+      <div class="tasto"><button #W>W</button></div>
+      <div class="tasto"><button #E>E</button></div>
+      <div class="tasto"><button #R>R</button></div>
+      <div class="tasto"><button #T>T</button></div>
+      <div class="tasto"><button #Y>Y</button></div>
+      <div class="tasto"><button #U>U</button></div>
+      <div class="tasto"><button #I>I</button></div>
+      <div class="tasto"><button #O>O</button></div>
+      <div class="tasto"><button #P>P</button></div>
     </div>
     <div id="riga2">
-      <div class="tasto"><button id="A">A</button></div>
-      <div class="tasto"><button id="S">S</button></div>
-      <div class="tasto"><button id="D">D</button></div>
-      <div class="tasto"><button id="F">F</button></div>
-      <div class="tasto"><button id="G">G</button></div>
-      <div class="tasto"><button id="H">H</button></div>
-      <div class="tasto"><button id="J">J</button></div>
-      <div class="tasto"><button id="K">K</button></div>
-      <div class="tasto"><button id="L">L</button></div>
+      <div class="tasto"><button #A>A</button></div>
+      <div class="tasto"><button #S>S</button></div>
+      <div class="tasto"><button #D>D</button></div>
+      <div class="tasto"><button #F>F</button></div>
+      <div class="tasto"><button #G>G</button></div>
+      <div class="tasto"><button #H>H</button></div>
+      <div class="tasto"><button #J>J</button></div>
+      <div class="tasto"><button #K>K</button></div>
+      <div class="tasto"><button #L>L</button></div>
     </div>
     <div id="riga3">
-      <div class="tasto"><button id="Z">Z</button></div>
-      <div class="tasto"><button id="X">X</button></div>
-      <div class="tasto"><button id="C">C</button></div>
-      <div class="tasto"><button id="V">V</button></div>
-      <div class="tasto"><button id="B">B</button></div>
-      <div class="tasto"><button id="N">N</button></div>
-      <div class="tasto"><button id="M">M</button></div>
+      <div class="tasto"><button #Z>Z</button></div>
+      <div class="tasto"><button #X>X</button></div>
+      <div class="tasto"><button #C>C</button></div>
+      <div class="tasto"><button #V>V</button></div>
+      <div class="tasto"><button #B>B</button></div>
+      <div class="tasto"><button #N>N</button></div>
+      <div class="tasto"><button #M>M</button></div>
     </div>
-  </div>
+  </div><br>
+  <button id="generaParola" (click)="generaParola()">Genera frase da indovinare</button>
 </div>
