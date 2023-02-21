@@ -9,5 +9,5 @@ import {Component,OnInit} from "@angular/core";
 export class Errore404Component implements OnInit {
   constructor(){}
 
-  ngOnInit(): void {}
+  ngOnInit():void{}
 }

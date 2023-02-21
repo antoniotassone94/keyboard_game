@@ -7,11 +7,13 @@ import {Component,OnInit} from "@angular/core";
 })
 
 export class HomepageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  premiTasto(tastoPremuto:string):void{
-    console.log("Hai premuto il tasto " + tastoPremuto);
+  constructor(){
+    focus();
+    addEventListener("keydown",(event:KeyboardEvent) => {
+      const carattere:string = event.key.toUpperCase();
+      console.log("Hai premuto il tasto " + carattere);
+    });
   }
+
+  ngOnInit():void{}
 }
