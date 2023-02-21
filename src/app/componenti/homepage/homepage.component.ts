@@ -4,7 +4,6 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 //la parola si colora a mano a mano che viene digitato un carattere
 //lampeggiamento del bottone della tastiera (rosso/verde e ritorno al colore originale), adesso si colora e basta
 //stampa degli errori da qualche parte anzichè nella console (componente visivo)
-//funzione generaParola() da implementare e cancellazione parola di default
 
 @Component({
   selector: "app-homepage",
@@ -20,7 +19,43 @@ export class HomepageComponent implements OnInit{
     "parolatre",
     "parolaquattro",
     "parolacinque",
-    "parolasei"
+    "parolasei",
+    "parolasette",
+    "parolaotto",
+    "parolanove",
+    "paroladieci",
+    "parolaundici",
+    "paroladodici",
+    "parolatredici",
+    "parolaquattordici",
+    "parolaquindici",
+    "parolasedici",
+    "paroladiciassette",
+    "paroladiciotto",
+    "paroladiciannove",
+    "parolaventi",
+    "parolaventuno",
+    "parolaventidue",
+    "parolaventitre",
+    "parolaventiquattro",
+    "parolaventicinque",
+    "parolaventisei",
+    "parolaventisette",
+    "parolaventotto",
+    "parolaventinove",
+    "parolatrenta",
+    "parolatrentuno",
+    "parolatrentadue",
+    "parolatrentatre",
+    "parolatrentaquattro",
+    "parolatrentacinque",
+    "parolatrentasei",
+    "parolatrentasette",
+    "parolatrentotto",
+    "parolatrentanove",
+    "parolaquaranta",
+    "parolaquarantuno",
+    "parolaquarantadue"
   ];
   @ViewChild("parola") parola!:ElementRef<HTMLDivElement>; //elemento html che contiene la parola da scrivere
   @ViewChild("numero") numero!:ElementRef<HTMLDivElement>; //elemento html che contiene il punteggio totale
