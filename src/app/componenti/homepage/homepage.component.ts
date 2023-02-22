@@ -299,6 +299,7 @@ export class HomepageComponent implements OnInit{
     this.caratteridigitati.nativeElement.innerHTML = "";
     this.caratteririmanenti.nativeElement.innerHTML = "";
     this.resettaColoriTastiera();
+    this.messaggioErrore = "";
     const numeroCasuale:number = Math.round(Math.random() * (this.dizionario.length - 1));
     this.caratteririmanenti.nativeElement.innerHTML = this.dizionario[numeroCasuale];
   }
