@@ -303,9 +303,12 @@ export class HomepageComponent implements OnInit{
   }
 
   public controllaCarattere(carattereDaControllare:string):boolean{
-    const elencoCaratteri:string[] = ["A","B","C","D","E","F","G","H","I","J",
-                                      "K","L","M","N","O","P","Q","R","S","T",
-                                      "U","V","W","X","Y","Z"];
+    const elencoCaratteri:string[] = ["A","B","C","D","E",
+                                      "F","G","H","I","J",
+                                      "K","L","M","N","O",
+                                      "P","Q","R","S","T",
+                                      "U","V","W","X","Y",
+                                      "Z"];
     for(let i = 0;i < elencoCaratteri.length;i++){
       if(carattereDaControllare == elencoCaratteri[i]){
         return true;
