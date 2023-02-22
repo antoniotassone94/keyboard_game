@@ -12,7 +12,7 @@
   margin-right:auto;
 }
 
-#numero{
+#numero,#caratteridigitati,#caratteririmanenti{
   margin-top:0px;
   margin-left:0px;
   margin-bottom:0px;
@@ -30,7 +30,7 @@
   font-weight:bold;
 }
 
-#punteggio{
+#punteggio,#caratteridigitati{
   color:rgb(102,220,97);
 }
 
@@ -39,8 +39,14 @@
 }
 
 #riga1,#riga2,#riga3{
+  padding-top:0px;
+  padding-left:0px;
+  padding-bottom:0px;
+  padding-right:0px;
   margin-top:12px;
   margin-bottom:12px;
+  border:0px none transparent;
+  width:min-content;
 }
 
 #contenitore,#tastiera,.tasto,#punteggio,#parola{
@@ -51,12 +57,39 @@
 }
 
 button{
+  padding-top:0px;
+  padding-left:0px;
+  padding-bottom:0px;
+  padding-right:0px;
+  margin-left:0px;
+  margin-right:0px;
+}
+
+.apririga{
   padding-top:13px;
   padding-left:13px;
   padding-bottom:13px;
   padding-right:13px;
-  margin-left:10px;
-  margin-right:10px;
+  margin-left:0px;
+  margin-right:5px;
+}
+
+.chiudiriga{
+  padding-top:13px;
+  padding-left:13px;
+  padding-bottom:13px;
+  padding-right:13px;
+  margin-left:5px;
+  margin-right:0px;
+}
+
+.bottonealcentro{
+  padding-top:13px;
+  padding-left:13px;
+  padding-bottom:13px;
+  padding-right:13px;
+  margin-left:5px;
+  margin-right:5px;
 }
 
 #contenitore,#punteggio,#parola{

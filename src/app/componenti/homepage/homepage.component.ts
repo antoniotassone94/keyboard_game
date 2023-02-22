@@ -1,7 +1,6 @@
 import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 
 //funzioni che mancano:
-//la parola si colora a mano a mano che viene digitato un carattere
 //stampa degli errori da qualche parte anzichè nella console (componente visivo)
 
 @Component({
@@ -11,7 +10,6 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 })
 
 export class HomepageComponent implements OnInit{
-  private indice:number = 0;
   private coloreDefaultBottone:string = "rgb(238,238,238)"; //codice rgb preso dallo stile css del componente
   private dizionario:string[] = [
     "parolauno",
@@ -57,7 +55,8 @@ export class HomepageComponent implements OnInit{
     "parolaquarantuno",
     "parolaquarantadue"
   ];
-  @ViewChild("parola") parola!:ElementRef<HTMLDivElement>; //elemento html che contiene la parola da scrivere
+  @ViewChild("caratteririmanenti") caratteririmanenti!:ElementRef<HTMLDivElement>; //elemento html che contiene la parola da scrivere
+  @ViewChild("caratteridigitati") caratteridigitati!:ElementRef<HTMLDivElement>; //elemento html che contiene i caratteri già digitati
   @ViewChild("numero") numero!:ElementRef<HTMLDivElement>; //elemento html che contiene il punteggio totale
   @ViewChild("A") a!:ElementRef<HTMLButtonElement>;
   @ViewChild("B") b!:ElementRef<HTMLButtonElement>;
@@ -91,10 +90,10 @@ export class HomepageComponent implements OnInit{
     addEventListener("keydown",(event:KeyboardEvent) => {
       this.resettaColoriTastiera();
       const carattereDigitato:string = event.key.toUpperCase();
-      const parolaDaScrivere:string = this.parola.nativeElement.innerHTML;
+      const parolaDaScrivere:string = this.caratteririmanenti.nativeElement.innerHTML;
       let messaggio:string = "";
       let controllo:boolean = true;
-      if(this.indice >= parolaDaScrivere.length){
+      if(parolaDaScrivere.length <= 0){
         messaggio += "All'interno della parola non esistono caratteri da considerare.";
         controllo = false;
       }
@@ -103,8 +102,7 @@ export class HomepageComponent implements OnInit{
         controllo = false;
       }
       if(controllo){
-        const carattereCorrente:string = parolaDaScrivere.charAt(this.indice).toUpperCase();
-        this.indice++;
+        const carattereCorrente:string = parolaDaScrivere.charAt(0).toUpperCase();
         let punteggioAttuale:number = parseInt(this.numero.nativeElement.innerHTML);
         let colore:string = "";
         if(carattereCorrente == carattereDigitato){
@@ -119,6 +117,17 @@ export class HomepageComponent implements OnInit{
             punteggioAttuale = 0;
           }
         }
+        const caratterigiadigitati:string = this.caratteridigitati.nativeElement.innerHTML;
+        const caratteridadigitare:string = this.caratteririmanenti.nativeElement.innerHTML;
+        let stringadadigitarerimanente:string = "";
+        if(caratteridadigitare.length > 1){
+          for(let i = 1;i < caratteridadigitare.length;i++){
+            stringadadigitarerimanente += caratteridadigitare[i];
+          }
+        }
+        const stringadigitatamodificata:string = caratterigiadigitati + caratteridadigitare.charAt(0);
+        this.caratteridigitati.nativeElement.innerHTML = stringadigitatamodificata;
+        this.caratteririmanenti.nativeElement.innerHTML = stringadadigitarerimanente;
         this.numero.nativeElement.innerHTML = "" + punteggioAttuale;
         if(carattereDigitato == "A"){
           const sfondoVecchio:string = this.a.nativeElement.style.backgroundColor;
@@ -286,11 +295,11 @@ export class HomepageComponent implements OnInit{
   public ngOnInit():void{}
 
   public generaParola():void{
-    this.parola.nativeElement.innerHTML = "";
-    this.indice = 0;
+    this.caratteridigitati.nativeElement.innerHTML = "";
+    this.caratteririmanenti.nativeElement.innerHTML = "";
     this.resettaColoriTastiera();
     const numeroCasuale:number = Math.round(Math.random() * (this.dizionario.length - 1));
-    this.parola.nativeElement.innerHTML = this.dizionario[numeroCasuale];
+    this.caratteririmanenti.nativeElement.innerHTML = this.dizionario[numeroCasuale];
   }
 
   public controllaCarattere(carattereDaControllare:string):boolean{
