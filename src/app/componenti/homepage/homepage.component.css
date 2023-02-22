@@ -40,13 +40,28 @@
 
 #riga1,#riga2,#riga3{
   padding-top:0px;
-  padding-left:0px;
+  /*padding-left:0px;*/
   padding-bottom:0px;
-  padding-right:0px;
+  /*padding-right:0px;*/
   margin-top:12px;
   margin-bottom:12px;
   border:0px none transparent;
   width:min-content;
+}
+
+#riga1{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+#riga2{
+  padding-left:40px;
+  padding-right:40px;
+}
+
+#riga3{
+  padding-left:97px;
+  padding-right:97px;
 }
 
 #contenitore,#tastiera,.tasto,#punteggio,#parola{
