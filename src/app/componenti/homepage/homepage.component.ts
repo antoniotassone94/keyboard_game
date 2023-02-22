@@ -1,8 +1,5 @@
 import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 
-//funzioni che mancano:
-//stampa degli errori da qualche parte anzichè nella console (componente visivo)
-
 @Component({
   selector: "app-homepage",
   templateUrl: "./homepage.component.html",
@@ -10,6 +7,7 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 })
 
 export class HomepageComponent implements OnInit{
+  private messaggioErrore:string = "";
   private coloreDefaultBottone:string = "rgb(238,238,238)"; //codice rgb preso dallo stile css del componente
   private dizionario:string[] = [
     "parolauno",
@@ -89,17 +87,20 @@ export class HomepageComponent implements OnInit{
     focus();
     addEventListener("keydown",(event:KeyboardEvent) => {
       this.resettaColoriTastiera();
+      this.messaggioErrore = "";
       const carattereDigitato:string = event.key.toUpperCase();
       const parolaDaScrivere:string = this.caratteririmanenti.nativeElement.innerHTML;
       let messaggio:string = "";
       let controllo:boolean = true;
       if(parolaDaScrivere.length <= 0){
-        messaggio += "All'interno della parola non esistono caratteri da considerare.";
+        messaggio += "La frase è terminata devi generarne una nuova.\n";
         controllo = false;
       }
-      if(!this.controllaCarattere(carattereDigitato)){
-        messaggio += "Il carattere digitato non è valido.";
-        controllo = false;
+      if(controllo){
+        if(!this.controllaCarattere(carattereDigitato)){
+          messaggio += "Il carattere digitato non è valido.\n";
+          controllo = false;
+        }
       }
       if(controllo){
         const carattereCorrente:string = parolaDaScrivere.charAt(0).toUpperCase();
@@ -287,7 +288,7 @@ export class HomepageComponent implements OnInit{
           },500);
         }
       }else{
-        console.error(messaggio);
+        this.messaggioErrore = messaggio;
       }
     });
   }
@@ -344,5 +345,9 @@ export class HomepageComponent implements OnInit{
     this.x.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
     this.y.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
     this.z.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+  }
+
+  public getMessaggioErrore():string{
+    return this.messaggioErrore;
   }
 }

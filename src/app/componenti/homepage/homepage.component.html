@@ -35,5 +35,6 @@
       <div class="tasto"><button #M class="chiudiriga">M</button></div>
     </div>
   </div><br>
-  <button id="generaParola" (click)="generaParola()">Genera frase da indovinare</button>
+  <button id="generaParola" (click)="generaParola()">Genera frase da indovinare</button><br><br>
+  <div *ngIf='!(getMessaggioErrore() == "")' id="messaggioErrore">{{getMessaggioErrore()}}</div>
 </div>
