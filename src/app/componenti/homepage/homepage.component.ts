@@ -2,7 +2,6 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 
 //funzioni che mancano:
 //la parola si colora a mano a mano che viene digitato un carattere
-//lampeggiamento del bottone della tastiera (rosso/verde e ritorno al colore originale), adesso si colora e basta
 //stampa degli errori da qualche parte anzichè nella console (componente visivo)
 
 @Component({
@@ -13,6 +12,7 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 
 export class HomepageComponent implements OnInit{
   private indice:number = 0;
+  private coloreDefaultBottone:string = "rgb(238,238,238)"; //codice rgb preso dallo stile css del componente
   private dizionario:string[] = [
     "parolauno",
     "paroladue",
@@ -89,6 +89,7 @@ export class HomepageComponent implements OnInit{
   constructor(){
     focus();
     addEventListener("keydown",(event:KeyboardEvent) => {
+      this.resettaColoriTastiera();
       const carattereDigitato:string = event.key.toUpperCase();
       const parolaDaScrivere:string = this.parola.nativeElement.innerHTML;
       let messaggio:string = "";
@@ -97,32 +98,22 @@ export class HomepageComponent implements OnInit{
         messaggio += "All'interno della parola non esistono caratteri da considerare.";
         controllo = false;
       }
-      let carattereCorrente:string = "";
-      if(controllo){
-        carattereCorrente = parolaDaScrivere.charAt(this.indice).toUpperCase();
-        this.indice++;
-        const elencoCaratteri:string[] = ["A","B","C","D","E","F","G","H","I","J",
-                                          "K","L","M","N","O","P","Q","R","S","T",
-                                          "U","V","W","X","Y","Z"];
-        let carattereValido:boolean = false;
-        elencoCaratteri.forEach(singoloCarattere => {
-          if(carattereDigitato == singoloCarattere){
-            carattereValido = true;
-          }
-        });
-        if(!carattereValido){
-          messaggio += "Il carattere digitato non è valido.";
-          controllo = false;
-        }
+      if(!this.controllaCarattere(carattereDigitato)){
+        messaggio += "Il carattere digitato non è valido.";
+        controllo = false;
       }
       if(controllo){
+        const carattereCorrente:string = parolaDaScrivere.charAt(this.indice).toUpperCase();
+        this.indice++;
         let punteggioAttuale:number = parseInt(this.numero.nativeElement.innerHTML);
         let colore:string = "";
         if(carattereCorrente == carattereDigitato){
-          colore = "rgb(102,220,97)";
+          colore = "rgb(102,220,97)"; //codice rgb del colore verde preso dallo stile css del componente.
           punteggioAttuale++;
         }else{
-          colore = "rgb(255,83,83)";
+          colore = "rgb(255,83,83)"; //codice rgb del colore rosso scelto per indicare che il carattere
+                                     //digitato è sbagliato evidenziandolo sulla tastiera visibile sullo
+                                     //schermo.
           punteggioAttuale--;
           if(punteggioAttuale < 0){
             punteggioAttuale = 0;
@@ -130,57 +121,161 @@ export class HomepageComponent implements OnInit{
         }
         this.numero.nativeElement.innerHTML = "" + punteggioAttuale;
         if(carattereDigitato == "A"){
+          const sfondoVecchio:string = this.a.nativeElement.style.backgroundColor;
           this.a.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.a.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "B"){
+          const sfondoVecchio:string = this.b.nativeElement.style.backgroundColor;
           this.b.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.b.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "C"){
+          const sfondoVecchio:string = this.c.nativeElement.style.backgroundColor;
           this.c.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.c.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "D"){
+          const sfondoVecchio:string = this.d.nativeElement.style.backgroundColor;
           this.d.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.d.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "E"){
+          const sfondoVecchio:string = this.e.nativeElement.style.backgroundColor;
           this.e.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.e.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "F"){
+          const sfondoVecchio:string = this.f.nativeElement.style.backgroundColor;
           this.f.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.f.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "G"){
+          const sfondoVecchio:string = this.g.nativeElement.style.backgroundColor;
           this.g.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.g.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "H"){
+          const sfondoVecchio:string = this.h.nativeElement.style.backgroundColor;
           this.h.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.h.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "I"){
+          const sfondoVecchio:string = this.i.nativeElement.style.backgroundColor;
           this.i.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.i.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "J"){
+          const sfondoVecchio:string = this.j.nativeElement.style.backgroundColor;
           this.j.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.j.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "K"){
+          const sfondoVecchio:string = this.k.nativeElement.style.backgroundColor;
           this.k.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.k.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "L"){
+          const sfondoVecchio:string = this.l.nativeElement.style.backgroundColor;
           this.l.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.l.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "M"){
+          const sfondoVecchio:string = this.m.nativeElement.style.backgroundColor;
           this.m.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.m.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "N"){
+          const sfondoVecchio:string = this.n.nativeElement.style.backgroundColor;
           this.n.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.n.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "O"){
+          const sfondoVecchio:string = this.o.nativeElement.style.backgroundColor;
           this.o.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.o.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "P"){
+          const sfondoVecchio:string = this.p.nativeElement.style.backgroundColor;
           this.p.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.p.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "Q"){
+          const sfondoVecchio:string = this.q.nativeElement.style.backgroundColor;
           this.q.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.q.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "R"){
+          const sfondoVecchio:string = this.r.nativeElement.style.backgroundColor;
           this.r.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.r.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "S"){
+          const sfondoVecchio:string = this.s.nativeElement.style.backgroundColor;
           this.s.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.s.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "T"){
+          const sfondoVecchio:string = this.t.nativeElement.style.backgroundColor;
           this.t.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.t.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "U"){
+          const sfondoVecchio:string = this.u.nativeElement.style.backgroundColor;
           this.u.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.u.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "V"){
+          const sfondoVecchio:string = this.v.nativeElement.style.backgroundColor;
           this.v.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.v.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "W"){
+          const sfondoVecchio:string = this.w.nativeElement.style.backgroundColor;
           this.w.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.w.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "X"){
+          const sfondoVecchio:string = this.x.nativeElement.style.backgroundColor;
           this.x.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.x.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "Y"){
+          const sfondoVecchio:string = this.y.nativeElement.style.backgroundColor;
           this.y.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.y.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }else if(carattereDigitato == "Z"){
+          const sfondoVecchio:string = this.z.nativeElement.style.backgroundColor;
           this.z.nativeElement.style.backgroundColor = colore;
+          setTimeout(() => {
+            this.z.nativeElement.style.backgroundColor = sfondoVecchio;
+          },500);
         }
       }else{
         console.error(messaggio);
@@ -193,7 +288,49 @@ export class HomepageComponent implements OnInit{
   public generaParola():void{
     this.parola.nativeElement.innerHTML = "";
     this.indice = 0;
+    this.resettaColoriTastiera();
     const numeroCasuale:number = Math.round(Math.random() * (this.dizionario.length - 1));
     this.parola.nativeElement.innerHTML = this.dizionario[numeroCasuale];
+  }
+
+  public controllaCarattere(carattereDaControllare:string):boolean{
+    const elencoCaratteri:string[] = ["A","B","C","D","E","F","G","H","I","J",
+                                      "K","L","M","N","O","P","Q","R","S","T",
+                                      "U","V","W","X","Y","Z"];
+    for(let i = 0;i < elencoCaratteri.length;i++){
+      if(carattereDaControllare == elencoCaratteri[i]){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public resettaColoriTastiera():void{
+    this.a.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.b.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.c.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.d.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.e.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.f.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.g.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.h.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.i.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.j.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.k.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.l.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.m.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.n.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.o.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.p.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.q.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.r.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.s.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.t.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.u.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.v.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.w.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.x.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.y.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
+    this.z.nativeElement.style.backgroundColor = this.coloreDefaultBottone;
   }
 }
