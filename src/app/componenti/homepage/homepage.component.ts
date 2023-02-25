@@ -1,4 +1,5 @@
 import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
+import {TimerHandle} from "rxjs/internal/scheduler/timerHandle";
 
 @Component({
   selector: "app-homepage",
@@ -7,6 +8,7 @@ import {Component,ElementRef,OnInit,ViewChild} from "@angular/core";
 })
 
 export class HomepageComponent implements OnInit{
+  private timerScrittura:TimerHandle = 0;
   private messaggioErrore:string = "";
   private coloreDefaultBottone:string = "rgb(238,238,238)"; //codice rgb preso dallo stile css del componente
   private dizionario:string[] = [
@@ -56,6 +58,7 @@ export class HomepageComponent implements OnInit{
   @ViewChild("caratteririmanenti") caratteririmanenti!:ElementRef<HTMLDivElement>; //elemento html che contiene la parola da scrivere
   @ViewChild("caratteridigitati") caratteridigitati!:ElementRef<HTMLDivElement>; //elemento html che contiene i caratteri già digitati
   @ViewChild("numero") numero!:ElementRef<HTMLDivElement>; //elemento html che contiene il punteggio totale
+  @ViewChild("tempotrascorso") tempotrascorso!:ElementRef<HTMLDivElement>; //elemento html che contiene il tempo trascorso mentre si digita la frase
   @ViewChild("A") a!:ElementRef<HTMLButtonElement>;
   @ViewChild("B") b!:ElementRef<HTMLButtonElement>;
   @ViewChild("C") c!:ElementRef<HTMLButtonElement>;
@@ -125,6 +128,9 @@ export class HomepageComponent implements OnInit{
           for(let i = 1;i < caratteridadigitare.length;i++){
             stringadadigitarerimanente += caratteridadigitare[i];
           }
+        }
+        if(caratteridadigitare.length == 1){
+          clearInterval(this.timerScrittura);
         }
         const stringadigitatamodificata:string = caratterigiadigitati + caratteridadigitare.charAt(0);
         this.caratteridigitati.nativeElement.innerHTML = stringadigitatamodificata;
@@ -302,6 +308,13 @@ export class HomepageComponent implements OnInit{
     this.messaggioErrore = "";
     const numeroCasuale:number = Math.round(Math.random() * (this.dizionario.length - 1));
     this.caratteririmanenti.nativeElement.innerHTML = this.dizionario[numeroCasuale];
+    clearInterval(this.timerScrittura);
+    this.tempotrascorso.nativeElement.innerHTML = "0";
+    this.timerScrittura = setInterval(() => {
+      let attuale:number = parseInt(this.tempotrascorso.nativeElement.innerHTML);
+      attuale++;
+      this.tempotrascorso.nativeElement.innerHTML = "" + attuale;
+    },1000);
   }
 
   public controllaCarattere(carattereDaControllare:string):boolean{

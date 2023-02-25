@@ -1,18 +1,18 @@
-#contenitore,#tastiera,.tasto,button,#punteggio,#parola{
+#contenitore,#tastiera,.tasto,button,#punteggio,#parola,#temposcrittura{
   width:max-content;
   height:max-content;
   font-size:30pt;
   text-align:center;
 }
 
-#contenitore,#tastiera,.tasto,#punteggio,#parola{
+#contenitore,#tastiera,.tasto,#punteggio,#parola,#temposcrittura{
   margin-top:auto;
   margin-left:auto;
   margin-bottom:auto;
   margin-right:auto;
 }
 
-#numero,#caratteridigitati,#caratteririmanenti,#messaggioErrore{
+#numero,#caratteridigitati,#caratteririmanenti,#messaggioErrore,.etichettatimer,#tempotrascorso{
   margin-top:0px;
   margin-left:0px;
   margin-bottom:0px;
@@ -26,7 +26,7 @@
   height:100%;
 }
 
-#punteggio,#parola{
+#punteggio,#parola,#temposcrittura{
   font-weight:bold;
 }
 
@@ -40,9 +40,7 @@
 
 #riga1,#riga2,#riga3{
   padding-top:0px;
-  /*padding-left:0px;*/
   padding-bottom:0px;
-  /*padding-right:0px;*/
   margin-top:12px;
   margin-bottom:12px;
   border:0px none transparent;
@@ -64,7 +62,7 @@
   padding-right:97px;
 }
 
-#contenitore,#tastiera,.tasto,#punteggio,#parola{
+#contenitore,#tastiera,.tasto,#punteggio,#parola,#temposcrittura{
   padding-top:0px;
   padding-left:0px;
   padding-bottom:0px;
@@ -126,7 +124,7 @@ button{
   flex-direction:column;
 }
 
-#punteggio,#parola,#riga1,#riga2,#riga3{
+#punteggio,#parola,#riga1,#riga2,#riga3,#temposcrittura{
   display:flex;
   flex-direction:row;
 }
